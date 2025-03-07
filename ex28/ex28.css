@@ -1,0 +1,16 @@
+body{
+    background-color: rgb(255, 153, 0);
+    color: aqua;
+    transition: 5s;
+    transform: scale(1.0);
+    position: relative;
+    font-style: italic;
+}
+body::after{
+    color: brown;
+}
+h1:hover{
+    cursor: pointer;
+    border: 50px saddlebrown solid;
+
+}
