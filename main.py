@@ -1,41 +1,40 @@
-import time
-import datetime
+def exibir_menu():
+    print("Bem-vindo ao menu de cadastros")
+    print("1 - Novo cadastro")
+    print("2 - Ver cadastros")
+    print("3 - Sair")
+    print("----------------------")
 
+def cadastrar_pessoa(cadastros):
+    nome = input("Nome: ")
+    idade = input("Idade: ")
+    turma = input("Turma: ")
+    curso = input("Curso: ")
+    cadastros.append({"Nome": nome, "Idade": idade, "Turma": turma, "Curso": curso})
+    print("Cadastro finalizado com sucesso")
 
-def cadastroDeUsuario():
-    nome = input("digite seu nome:")
-    idade = input("digite sua idade:")
-    turma = input("fale sua turma:")
-    curso = input("fale seu curso")
-    completo = (f"olá {name}, você tem {idade} anos")
-    print(completo)
-    filme18(idade)
-
-def filme18(idade):
-    if idade <18:
-        print("voce é de menor pode nao")
+def ver_cadastros(cadastros):
+    if not cadastros:
+        print("Nenhum cadastro no sistema")
     else:
-        print("safado")
-    time.sleep(3)
-    seucadastro(idade, nome, turma, curso)
-
-def seucadastro():
-    print("seu cadastro foi terminado")
-    cadastroDeUsuario.append({"NOME":name,"idade": idade, });
-    print("cadastro realizado!")
-  
-def ver_Cadastro(seucadastro)
-    if not seucadastro:
-       print("nenhum cadastro no sistema.")
-    else:
-       print("\n -----lista de cadastro-----")
-
-       for i, pessoa in enumerate (cadastro, 1):
-         print(f"{i}. Nome: {pessoa['Nome']}, Idade:
-                  {pessoa ['idade']}, Turma: {pessoa ['Turma']}, Curso: {pessoa['Curso']}")
+        print("\n-------Lista de Cadastros------")
+        for i, pessoa in enumerate(cadastros, 1):
+            print(f"{i} . Nome: {pessoa['Nome']}, Idade: {pessoa['Idade']}, Turma: {pessoa['Turma']}, Curso: {pessoa['Curso']}")
 
 def main():
-   
+    cadastros = []
+    while True:
+        exibir_menu()
+        opção = input("Escolha uma opção: ")
+        if opção == "1":
+            cadastrar_pessoa(cadastros)
+        elif opção == "2":
+            ver_cadastros(cadastros)
+        elif opção == "3":
+            print("Obrigado por usar o sistema! Até logo!")
+            break
+        else:
+            print("Escolha entre 1, 2 e 3.")
 
-
-cadastroDeUsuario()
+if __name__ == "__main__":
+    main()
