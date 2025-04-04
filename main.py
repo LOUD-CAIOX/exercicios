@@ -1,3 +1,7 @@
+import json
+
+arquivo_cadastros = "cadastros.json"
+
 def exibir_menu():
     print("Bem-vindo ao menu de cadastros")
     print("1 - Novo cadastro")
@@ -5,12 +9,25 @@ def exibir_menu():
     print("3 - Sair")
     print("----------------------")
 
+def salvar (cadastros):
+    with open (arquivo_cadastros, "w", encoding="utf-8") as arquivo:
+        json.dump(cadastros, arquivo, indent=4, ensure_ascii=False)
+
+def carregar_cadastros():
+    try:
+        with open (arquivo_cadastros, "r", encoding="utf-8") as arquivo:
+            return json.load(arquivo)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+    
+
 def cadastrar_pessoa(cadastros):
     nome = input("Nome: ")
     idade = input("Idade: ")
     turma = input("Turma: ")
     curso = input("Curso: ")
     cadastros.append({"Nome": nome, "Idade": idade, "Turma": turma, "Curso": curso})
+    salvar(cadastros)
     print("Cadastro finalizado com sucesso")
 
 def ver_cadastros(cadastros):
@@ -38,3 +55,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
